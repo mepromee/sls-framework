@@ -51,10 +51,6 @@ async function createAuction(event, context) {
 
 export const handler = commonMiddleware(createAuction).use(
   validator({
-    inputSchema: createAuctionSchema,
-    // ajvOptions: {
-    //   useDefaults: true,
-    //   strict: false,
-    // },
+    inputSchema: createAuctionSchema
   })
 );
