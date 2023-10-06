@@ -6,6 +6,7 @@ import createError from 'http-errors';
 import {setAuctionPictureUrl} from '../lib/setAuctionPictureUrl';
 import uploadAuctionPictureSchema from '../lib/schemas/uploadAuctionPictureSchema';
 import validator from '@middy/validator';
+import cors from '@middy/http-cors';
 
 export async function uploadAuctionPicture(event) {
     const {id} = event.pathParameters;
@@ -43,4 +44,5 @@ export const handler = middy(uploadAuctionPicture)
         ajvOptions: {
             strict: false,
         },
-    }));
+    }))
+    .use(cors());
